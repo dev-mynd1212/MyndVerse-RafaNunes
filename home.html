@@ -382,6 +382,22 @@
       cursor:pointer;
       transition: .2s ease;
     }
+    .video-portrait {
+  max-width: 220px;              /* tamanho elegante */
+  aspect-ratio: 9 / 16;          /* vídeo vertical */
+  margin: 0 auto 12px;           /* centralizado */
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-portrait video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
     .shot:hover{transform: translateY(-1px); border-color: rgba(214,177,94,.22)}
     .shot img{width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.01)}
     .shot .cap{
@@ -489,6 +505,8 @@
 <body>
   <div class="grain"></div>
 
+  
+
   <header class="nav">
     <div class="nav-inner">
       <div class="brand">
@@ -509,6 +527,8 @@
     </div>
   </header>
 
+  
+
   <main class="wrap">
     <!-- HERO -->
     <section class="hero" id="topo">
@@ -518,6 +538,8 @@
             <span class="badge"><span class="spark"></span> <strong>Projeto Especial — Rafa Nunes</strong></span>
             <span class="badge">Uma parceria entre <strong>Rafa Nunes</strong> e <strong>MyndVerse</strong></span>
           </div>
+
+          
 
           <h1>Uma presença digital oficial, premium e inesquecível — além das redes.</h1>
           <p class="sub">
@@ -537,6 +559,17 @@
               <span class="icon">↗</span> Como funciona a parceria
             </button>
           </div>
+
+          <div class="card">
+  <div class="video-portrait">
+    <video
+      src="https://ustreggl.sirv.com/rafanunes.mp4"
+      autoplay
+      loop
+      muted
+      playsinline>
+    </video>
+  </div>
 
           <div class="mini-tag"><b>Tom:</b> sofisticado, premium, profissional • <b>Foco:</b> autoridade + visibilidade + controle</div>
           <div class="shimmer"></div>
@@ -589,6 +622,8 @@
     </div>
   </div>
 
+  
+
   <div class="section-body">
     <div class="grid2">
       <div class="card">
@@ -636,12 +671,7 @@
         <div class="mini-tag"><b>Dica:</b> clique nas imagens para ampliar</div>
       </div>
 
-      <div class="card">
-        <video src="https://ustreggl.sirv.com/rafanunes.mp4" autoplay loop muted playsinline style="width:100%;border-radius:14px;margin-bottom:10px;"></video>
-        <h3>Referência - Rafa Nunes</h3>
-        <p class="hint">Avatares próprios aplicados a projetos reais e estratégias digitais.</p>
-      </div>
-    </div>
+     
 
       <div class="section-body">
         <div class="gallery">
@@ -671,6 +701,8 @@
           </figure>
         </div>
 
+        
+
         <div class="grid2" style="margin-top:16px;">
           <div class="card">
             <h3>Modelo atual (referência)</h3>
@@ -696,6 +728,8 @@
         </div>
       </div>
     </section>
+
+    
 
     <!-- 1. VISÃO -->
     <section class="section" id="visao">
@@ -768,6 +802,13 @@
         </div>
       </div>
     </section>
+
+    
+
+  <h3>Referência - Rafa Nunes</h3>
+  <p class="hint">Avatares próprios aplicados a projetos reais e estratégias digitais.</p>
+</div>
+
 
     <!-- 3. ESTRUTURA DO SITE -->
     <section class="section" id="estrutura">
