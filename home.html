@@ -1,1180 +1,716 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projeto Especial — Rafa Nunes × MyndVerse</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto Especial — Rafa Nunes × MyndVerse</title>
 
-  <!-- Open Graph (opcional, ajuste o domínio real quando hospedar) -->
-  <meta property="og:title" content="Projeto Especial — Rafa Nunes × MyndVerse" />
-  <meta property="og:description" content="Apresentação premium do ecossistema digital: site, blog, painel admin e avatares 3D sob demanda." />
-  <meta property="og:image" content="https://ustreggl.sirv.com/torre%20eifel.png" />
-  <meta property="og:type" content="website" />
+<meta property="og:title" content="Projeto Especial — Rafa Nunes × MyndVerse">
+<meta property="og:description" content="Site premium, avatar 3D e ecossistema digital completo">
+<meta property="og:image" content="https://ustreggl.sirv.com/torre%20eifel.png">
 
-  <style>
-    :root{
-      --bg:#07060a;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.10);
-      --stroke: rgba(255,255,255,.14);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --dim: rgba(255,255,255,.55);
-      --gold:#D6B15E;
-      --gold2:#F5D98A;
-      --violet:#7B3FF2;
-      --emerald:#35D39D;
-      --red:#FF4D6D;
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1100px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: var(--font);
-      color: var(--text);
-      background: radial-gradient(1200px 700px at 20% -10%, rgba(123,63,242,.25), transparent 55%),
-                  radial-gradient(900px 600px at 90% 10%, rgba(214,177,94,.18), transparent 55%),
-                  radial-gradient(1000px 700px at 30% 90%, rgba(53,211,157,.12), transparent 60%),
-                  linear-gradient(180deg, #05040a 0%, #07060a 35%, #06050b 100%);
-      overflow-x:hidden;
-    }
-
-    /* Subtle casino texture */
-    .grain{
-      position:fixed; inset:0;
-      pointer-events:none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
-      mix-blend-mode: overlay;
-      opacity:.20;
-    }
-
-    /* Top nav */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(7,6,10,.75), rgba(7,6,10,.30));
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      letter-spacing:.2px;
-      user-select:none;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      color: var(--muted);
-      font-size: 12.5px;
-      white-space:nowrap;
-    }
-    .dot{
-      width:9px; height:9px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
-      box-shadow: 0 0 16px rgba(214,177,94,.45);
-    }
-    .nav-links{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
-    .nav a{
-      color: var(--muted);
-      text-decoration:none;
-      font-size: 13px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      transition: .2s ease;
-    }
-    .nav a:hover{
-      color: var(--text);
-      background: rgba(255,255,255,.05);
-      border-color: rgba(255,255,255,.10);
-    }
-
-    /* Hero */
-    .wrap{max-width: var(--max); margin:0 auto; padding: 26px 18px 50px;}
-    .hero{
-      position:relative;
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(900px 500px at 20% 10%, rgba(214,177,94,.18), transparent 55%),
-        radial-gradient(800px 500px at 85% 10%, rgba(123,63,242,.22), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      padding: 22px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns: 1fr; padding: 18px;}
-    }
-
-    .hero-left{
-      padding: 6px 6px 6px 4px;
-    }
-    .kicker{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      margin-bottom: 14px;
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      font-size: 12.5px;
-      color: var(--muted);
-    }
-    .badge strong{color: var(--text); font-weight:700}
-    .spark{
-      width:10px; height:10px; border-radius:2px;
-      background: linear-gradient(135deg, var(--violet), var(--gold));
-      box-shadow: 0 0 18px rgba(123,63,242,.25), 0 0 20px rgba(214,177,94,.18);
-      transform: rotate(10deg);
-    }
-
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -.6px;
-      line-height: 1.05;
-    }
-    .sub{
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.5;
-      max-width: 70ch;
-      font-size: 14.8px;
-    }
-
-    .cta-row{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin: 14px 0 8px;
-    }
-    .btn{
-      appearance:none;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 13.5px;
-      cursor:pointer;
-      transition: .2s ease;
-      display:inline-flex; align-items:center; gap:10px;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18)}
-    .btn.primary{
-      border-color: rgba(214,177,94,.45);
-      background: radial-gradient(140px 70px at 20% 30%, rgba(245,217,138,.35), rgba(214,177,94,.10)),
-                  linear-gradient(180deg, rgba(214,177,94,.18), rgba(255,255,255,.05));
-      box-shadow: 0 10px 26px rgba(0,0,0,.25), 0 0 18px rgba(214,177,94,.12);
-    }
-    .btn .icon{
-      width:18px; height:18px; border-radius:6px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.14);
-      display:grid; place-items:center;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .hero-right{
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      padding: 16px;
-      display:flex;
-      flex-direction:column;
-      gap: 14px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .profile{
-      display:flex; gap:14px; align-items:center;
-    }
-    .pfp{
-      width: 72px; height: 72px; border-radius: 999px;
-      border: 2px solid rgba(214,177,94,.55);
-      box-shadow: 0 0 0 6px rgba(214,177,94,.10), 0 20px 40px rgba(0,0,0,.35);
-      overflow:hidden;
-      flex: 0 0 auto;
-      background: #111;
-    }
-    .pfp img{width:100%; height:100%; object-fit:cover; display:block}
-    .pmeta .name{
-      font-weight:800;
-      letter-spacing:-.2px;
-      margin:0;
-      font-size: 16px;
-    }
-    .pmeta .role{
-      margin:4px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height:1.3;
-    }
-    .value-card{
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.12);
-      padding: 14px;
-    }
-    .value-card .label{
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing:.25px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .value-card .price{
-      display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
-    }
-    .price strong{
-      font-size: 28px;
-      letter-spacing:-.6px;
-    }
-    .price span{
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .value-card .note{
-      margin-top: 10px;
-      color: var(--dim);
-      font-size: 12.8px;
-      line-height:1.4;
-    }
-
-    .casino-lines{
-      position:absolute; inset:-40px -60px auto auto;
-      width: 220px; height: 220px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(214,177,94,.30), transparent 55%),
-        radial-gradient(circle at 80% 50%, rgba(123,63,242,.26), transparent 55%);
-      filter: blur(10px);
-      opacity:.8;
-      transform: rotate(18deg);
-      pointer-events:none;
-    }
-
-    /* Sections */
-    .section{
-      margin-top: 18px;
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
-      box-shadow: 0 14px 50px rgba(0,0,0,.35);
-      overflow:hidden;
-    }
-    .section-head{
-      padding: 18px 18px 0;
-      display:flex; align-items:flex-end; justify-content:space-between; gap: 10px; flex-wrap:wrap;
-    }
-    .section h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:-.2px;
-    }
-    .section p.lead{
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height:1.6;
-      max-width: 80ch;
-      font-size: 14px;
-    }
-    .section-body{
-      padding: 16px 18px 18px;
-    }
-
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-    @media (max-width: 900px){ .grid2{grid-template-columns: 1fr;} }
-
-    .card{
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      padding: 14px;
-      position:relative;
-      overflow:hidden;
-    }
-    .card h3{
-      margin: 0 0 8px;
-      font-size: 14px;
-      letter-spacing:-.2px;
-    }
-    .card ul{
-      margin:0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height:1.6;
-      font-size: 13.8px;
-    }
-    .card li{margin: 6px 0;}
-    .card .hint{
-      margin-top: 10px;
-      color: var(--dim);
-      font-size: 12.8px;
-      line-height:1.45;
-    }
-
-    .mini-tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      border-radius: 999px;
-      padding: 6px 10px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 10px;
-      user-select:none;
-    }
-    .mini-tag b{color: var(--text)}
-
-    /* Gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .shot{
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-      overflow:hidden;
-      position:relative;
-      min-height: 140px;
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
-      cursor:pointer;
-      transition: .2s ease;
-    }
-    .video-portrait {
-  max-width: 220px;              /* tamanho elegante */
-  aspect-ratio: 9 / 16;          /* vídeo vertical */
-  margin: 0 auto 12px;           /* centralizado */
-  border-radius: 18px;
-  overflow: hidden;
-  background: #000;
+<style>
+:root{
+  --bg:#07060a;
+  --panel:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.12);
+  --text:rgba(255,255,255,.95);
+  --muted:rgba(255,255,255,.7);
+  --gold:#D6B15E;
+  --radius:18px;
+  --max:1100px;
+  --font:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
 }
 
-.video-portrait video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:var(--font);
+  background:linear-gradient(180deg,#05040a,#07060a);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-    .shot:hover{transform: translateY(-1px); border-color: rgba(214,177,94,.22)}
-    .shot img{width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.01)}
-    .shot .cap{
-      position:absolute;
-      left: 10px; right: 10px; bottom: 10px;
-      padding: 10px 10px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55));
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(8px);
-      color: rgba(255,255,255,.88);
-      font-size: 12.4px;
-      line-height:1.35;
-    }
+img,video{max-width:100%;display:block}
 
-    .shot.s1{grid-column: span 5;}
-    .shot.s2{grid-column: span 7;}
-    .shot.s3{grid-column: span 4;}
-    .shot.s4{grid-column: span 4;}
-    .shot.s5{grid-column: span 4;}
-    @media (max-width: 900px){
-      .shot.s1,.shot.s2,.shot.s3,.shot.s4,.shot.s5{grid-column: span 12;}
-      .shot{min-height: 200px;}
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(10px);
+  background:rgba(7,6,10,.85);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
 
-    /* Footer */
-    .footer{
-      margin-top: 18px;
-      padding: 18px;
-      color: var(--dim);
-      font-size: 12.8px;
-      line-height:1.55;
-      text-align:center;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
+.nav-inner{
+  max-width:var(--max);
+  margin:auto;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
 
-    /* Modal */
-    .modal{
-      position: fixed; inset:0;
-      display:none;
-      place-items:center;
-      background: rgba(0,0,0,.72);
-      z-index: 99;
-      padding: 18px;
-    }
-    .modal.open{display:grid;}
-    .modal-card{
-      width:min(980px, 100%);
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      box-shadow: 0 30px 90px rgba(0,0,0,.6);
-      overflow:hidden;
-      position:relative;
-    }
-    .modal-top{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 14px 0;
-      gap:10px;
-    }
-    .modal-top .title{
-      color: var(--muted);
-      font-size: 12.5px;
-    }
-    .close{
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 8px 10px;
-      cursor:pointer;
-      transition:.2s ease;
-    }
-    .close:hover{background: rgba(255,255,255,.06); transform: translateY(-1px)}
-    .modal-img{
-      width:100%;
-      height: min(68vh, 620px);
-      background: #000;
-    }
-    .modal-img img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      display:block;
-    }
-    .modal-caption{
-      padding: 14px 16px 16px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height:1.5;
-      border-top: 1px solid rgba(255,255,255,.10);
-    }
+nav{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+}
 
-    /* Subtle casino shimmer line */
-    .shimmer{
-      height: 1px;
-      width: 100%;
-      background: linear-gradient(90deg, transparent, rgba(214,177,94,.45), rgba(123,63,242,.35), transparent);
-      opacity:.75;
-      margin: 14px 0 0;
-    }
-  </style>
+nav a{
+  text-decoration:none;
+  color:var(--muted);
+  border:1px solid var(--stroke);
+  padding:6px 10px;
+  border-radius:12px;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:16px;
+}
+
+section{
+  margin-top:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+  border:1px solid var(--stroke);
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.section-head{padding:16px}
+.section-body{padding:16px}
+
+h1{font-size:26px;margin:0 0 10px}
+h2{font-size:18px;margin:0}
+h3{font-size:15px;margin:0 0 6px}
+
+p{font-size:14px;line-height:1.6;color:var(--muted)}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+.card{
+  padding:14px;
+  border-radius:16px;
+  background:rgba(0,0,0,.25);
+  border:1px solid var(--stroke);
+}
+
+ul{padding-left:18px;color:var(--muted);font-size:13.5px}
+
+/* VIDEO */
+.hero video{
+  aspect-ratio:9/16;
+  max-width:220px;
+  margin:14px auto;
+  border-radius:18px;
+  object-fit:cover;
+}
+
+/* CARROSSEL */
+.carousel{
+  position:relative;
+}
+
+.carousel-track{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+}
+
+.carousel-track::-webkit-scrollbar{display:none}
+
+.slide{
+  flex:0 0 85%;
+  scroll-snap-align:center;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:#000;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.caption{
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  background:rgba(0,0,0,.55);
+  padding:8px 10px;
+  border-radius:12px;
+  font-size:12px;
+}
+
+.carousel button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  border:1px solid var(--stroke);
+  color:#fff;
+  font-size:26px;
+  border-radius:12px;
+  padding:4px 10px;
+  cursor:pointer;
+}
+
+.prev{left:6px}
+.next{right:6px}
+
+@media(min-width:900px){
+  .nav-inner{flex-direction:row;justify-content:space-between}
+  .grid{grid-template-columns:1fr 1fr}
+  .slide{flex:0 0 32%}
+}
+</style>
 </head>
 
 <body>
-  <div class="grain"></div>
 
-  
+<header>
+  <div class="nav-inner">
+    <strong>MyndVerse × Projeto Especial</strong>
+    <nav>
+      <a href="#visao">Visão</a>
+      <a href="#importancia">Importância</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#painel">Painel</a>
+      <a href="#avatar">Avatar</a>
+      <a href="#parceria">Parceria</a>
+      <a href="#conclusao">Conclusão</a>
+    </nav>
+  </div>
+</header>
 
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="brand">
-        <span class="dot"></span>
-        <span class="chip"><strong>MyndVerse</strong> <span style="opacity:.7">×</span> <strong>Projeto Especial</strong></span>
-        <span class="chip">Tema Cassino • Premium</span>
-      </div>
+<main class="wrap">
 
-      <nav class="nav-links" aria-label="Navegação">
-        <a href="#visao">Visão</a>
-        <a href="#importancia">Importância</a>
-        <a href="#estrutura">Estrutura do Site</a>
-        <a href="#painel">Painel Admin</a>
-        <a href="#avatar">Avatar 3D</a>
-        <a href="#parceria">Parceria</a>
-        <a href="#conclusao">Conclusão</a>
-      </nav>
-    </div>
-  </header>
+<section class="hero">
+  <h1>Uma presença digital oficial, premium e inesquecível — além das redes.</h1>
+  <p>
+    A MyndVerse propõe criar um site institucional premium e exclusivo para a Rafa Nunes,
+    estimado em R$ 9.500,00 ou mais em valor de mercado, entregue 100% como presente,
+    sem custo financeiro.
+  </p>
 
-  
+  <video src="https://ustreggl.sirv.com/rafanunes.mp4" autoplay loop muted playsinline></video>
+</section>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="topo">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <div class="kicker">
-            <span class="badge"><span class="spark"></span> <strong>Projeto Especial — Rafa Nunes</strong></span>
-            <span class="badge">Uma parceria entre <strong>Rafa Nunes</strong> e <strong>MyndVerse</strong></span>
-          </div>
-
-          
-
-          <h1>Uma presença digital oficial, premium e inesquecível — além das redes.</h1>
-          <p class="sub">
-            A MyndVerse propõe criar um site institucional premium e exclusivo para a Rafa Nunes, estimado em R$ 9.500,00 ou mais em valor de mercado, entregue 100% como presente, sem custo financeiro.
-            O objetivo é elevar a presença digital da Rafa para um novo nível de autoridade, organização, visibilidade e profissionalismo, indo além das redes sociais.
-            Este projeto não é apenas um site. É a construção de um ecossistema digital próprio, que acompanha a Rafa no presente e no futuro.
-          </p>
-
-          <div class="cta-row">
-            <button class="btn primary" onclick="document.querySelector('#visao').scrollIntoView({behavior:'smooth'})">
-              <span class="icon">01</span> Ver apresentação completa
-            </button>
-            <button class="btn" onclick="document.querySelector('#galeria').scrollIntoView({behavior:'smooth'})">
-              <span class="icon">3D</span> Galeria do avatar (referências)
-            </button>
-            <button class="btn" onclick="document.querySelector('#parceria').scrollIntoView({behavior:'smooth'})">
-              <span class="icon">↗</span> Como funciona a parceria
-            </button>
-          </div>
-
-          <div class="card">
-  <div class="video-portrait">
-    <video
-      src="https://ustreggl.sirv.com/rafanunes.mp4"
-      autoplay
-      loop
-      muted
-      playsinline>
-    </video>
+<!-- GALERIA EM CARROSSEL -->
+<section>
+  <div class="section-head">
+    <h2>Galeria do Avatar — Referências Visuais</h2>
+    <p>Arraste para o lado para visualizar</p>
   </div>
 
-          <div class="mini-tag"><b>Tom:</b> sofisticado, premium, profissional • <b>Foco:</b> autoridade + visibilidade + controle</div>
-          <div class="shimmer"></div>
-        </div>
-
-        <aside class="hero-right">
-          <div class="casino-lines"></div>
-
-          <div class="profile">
-            <div class="pfp" title="Foto de perfil circular">
-              <img src="https://ustreggl.sirv.com/torre%20eifel.png" alt="Foto de perfil (circular)" />
-            </div>
-            <div class="pmeta">
-              <p class="name">Rafa Nunes</p>
-              <p class="role">Presença digital oficial • Site premium • Ecossistema próprio<br/>Projeto com tema cassino e estética high-end</p>
-            </div>
-          </div>
-
-          <div class="value-card">
-            <div class="label">Valor estimado de mercado</div>
-            <div class="price">
-              <strong>R$ 9.500+</strong>
-              <span>entregue como presente • sem custo financeiro</span>
-            </div>
-            <div class="note">
-              A proposta considera desenvolvimento premium, blog completo com editor, painel administrativo, estrutura de SEO e expansão futura.
-              Dependendo das funções exclusivas incluídas, o custo de mercado pode ser maior.
-            </div>
-          </div>
-
-          <div class="value-card">
-            <div class="label">Um ponto oficial para o mundo</div>
-            <div class="note">
-              A referência passa a ser: “Pesquise no Google: Rafa Nunes.” <br/>
-              Uma presença que organiza narrativa, posiciona reputação e centraliza projetos, parcerias e conteúdo.
-            </div>
-          </div>
-        </aside>
+  <div class="section-body">
+    <div class="carousel">
+      <button class="prev">‹</button>
+      <div class="carousel-track">
+        <div class="slide"><img src="https://ustreggl.sirv.com/torre%20eifel.png"><div class="caption">Atmosfera premium</div></div>
+        <div class="slide"><img src="https://ustreggl.sirv.com/rafa%20nunes%20perfil.png"><div class="caption">Avatar perfil</div></div>
+        <div class="slide"><img src="https://ustreggl.sirv.com/rafa777.png"><div class="caption">Tema cassino</div></div>
+        <div class="slide"><img src="https://ustreggl.sirv.com/cartas.png"><div class="caption">Storytelling</div></div>
+        <div class="slide"><img src="https://ustreggl.sirv.com/iphone.png"><div class="caption">Assets para stories</div></div>
       </div>
-    </section>
+      <button class="next">›</button>
+    </div>
+  </div>
+</section>
 
-    <section class="section" id="marcas-avatar">
+<!-- 1. VISÃO -->
+<section class="section" id="visao">
   <div class="section-head">
     <div>
-      <h2>Marcas que já usam avatares digitais</h2>
+      <h2>1. Visão do Projeto</h2>
       <p class="lead">
-        Avatares não são tendência futura. São estratégia atual de presença,
-        autoridade e escala de conteúdo.
+        Este projeto existe para transformar a presença digital da Rafa em algo oficial, premium e atemporal — um “lugar definitivo” na internet que não depende do Instagram para existir.
       </p>
     </div>
   </div>
 
-  
-
   <div class="section-body">
+    <p class="lead">
+      A MyndVerse propõe criar um site institucional premium e exclusivo para a Rafa Nunes, estimado em R$ 9.500,00 ou mais em valor de mercado, entregue 100% como presente, sem custo financeiro.
+      O objetivo é elevar a presença digital da Rafa para um novo nível de autoridade, organização, visibilidade e profissionalismo, indo além das redes sociais.
+      Este projeto não é apenas um site. É a construção de um ecossistema digital próprio, que acompanha a Rafa no presente e no futuro.
+    </p>
+
     <div class="grid2">
       <div class="card">
-        <img src="https://www.techenet.com/wp-content/uploads/2023/12/Samsung-Avatar-Sam.webp" style="width:100%;border-radius:14px;margin-bottom:10px;">
-        <h3>Samsung — Sam</h3>
-        <p class="hint">Humanização de marca, conexão emocional e presença constante.</p>
+        <h3>O que é (na prática)</h3>
+        <ul>
+          <li><b>Um endereço oficial</b> da Rafa na internet, com identidade visual e narrativa controladas.</li>
+          <li><b>Um centro organizador</b> de conteúdo: história, trajetória, projetos, parcerias, vídeos e registros.</li>
+          <li><b>Um ponto de autoridade:</b> quando alguém pesquisar “Rafa Nunes”, existe uma referência sólida, profissional e confiável.</li>
+          <li><b>Um espaço que a Rafa controla</b> (domínio, estrutura e conteúdo), sem depender de mudanças de algoritmo ou alcance.</li>
+        </ul>
+        <div class="hint">
+          Em resumo: é o “lar digital oficial” da Rafa — algo que fica, cresce e se valoriza com o tempo.
+        </div>
       </div>
 
       <div class="card">
-        <img src="https://4.bp.blogspot.com/-HCFmh33PQRc/WeY_HYYs8fI/AAAAAAAACHY/jiRCE8Sm3zAc4EyjSLznAkRTdF-Gm_FvQCLcBGAs/s1600/Eduardo_Bremer_Lu_Tinder_Magazine_Luiza.png" style="width:100%;border-radius:14px;margin-bottom:10px;">
-        <h3>Magazine Luiza — Lu</h3>
-        <p class="hint">Um dos maiores cases de avatar digital do mundo.</p>
-      </div>
-
-      <div class="card">
-        <img src="https://lirp.cdn-website.com/69665600/dms3rep/multi/opt/2-1-768x512-640w.png" style="width:100%;border-radius:14px;margin-bottom:10px;">
-        <h3>BMW — Lil Miquela</h3>
-        <p class="hint">Narrativa premium, estética e posicionamento aspiracional.</p>
-      </div>
-
-      <div class="card">
-        <video src="https://ustreggl.sirv.com/LUNA%20ACENANDO.mp4" autoplay loop muted playsinline style="width:100%;border-radius:14px;margin-bottom:10px;"></video>
-        <h3>MyndVerse — Luna</h3>
-        <p class="hint">Avatares próprios aplicados a projetos reais e estratégias digitais.</p>
+        <h3>O que muda</h3>
+        <ul>
+          <li><b>Autoridade fora do Instagram:</b> a Rafa passa a existir também no Google e no mundo “fora das redes”.</li>
+          <li><b>Organização e profissionalismo:</b> tudo fica estruturado e fácil de entender.</li>
+          <li><b>Credibilidade para marcas:</b> empresas enxergam mais seriedade e confiança quando existe um site oficial.</li>
+          <li><b>Base de longo prazo:</b> o site vira um ativo, não um post que some em 24h.</li>
+        </ul>
+        <div class="hint">
+          O resultado é uma presença mais forte, mais sólida e mais “de pessoa grande” no digital.
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="mini-tag" style="margin-top:14px;">
-      <b>Conclusão:</b> o avatar da Rafa segue o mesmo conceito usado por grandes marcas — adaptado ao nível pessoal.
+<!-- 2. IMPORTÂNCIA -->
+<section class="section" id="importancia">
+  <div class="section-head">
+    <div>
+      <h2>2. Por que esse projeto é importante</h2>
+      <p class="lead">
+        A internet funciona como um “cartão de visita permanente”. Hoje, quando alguém pesquisa um nome no Google, a primeira impressão vem daí — e isso influencia seguidores, marcas, imprensa e oportunidades.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p class="lead">
+      Hoje, ao pesquisar “Rafa Nunes” no Google, praticamente não existem resultados sólidos fora do Instagram, e muitas vezes associados a termos que não representam sua imagem de forma estratégica.
+      Com um site próprio, a Rafa passa a: ser encontrada no Google pelo próprio nome; ter controle total da própria narrativa; construir autoridade fora das redes sociais; centralizar tudo em um único lugar oficial.
+      O site se torna a referência principal: “Pesquise no Google: Rafa Nunes.”
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Ganhos diretos (o que acontece rápido)</h3>
+        <ul>
+          <li><b>Encontrabilidade:</b> a Rafa começa a existir no Google com uma referência oficial e organizada.</li>
+          <li><b>Controle de narrativa:</b> o site mostra exatamente o que a Rafa quer que as pessoas vejam primeiro.</li>
+          <li><b>Centralização:</b> tudo em um lugar só (parcerias, história, galeria, projetos, contatos).</li>
+          <li><b>Profissionalismo instantâneo:</b> quem entra percebe que há uma estrutura “de marca”.</li>
+        </ul>
+        <div class="hint">
+          Isso já aumenta o nível de confiança de quem visita, inclusive marcas e possíveis parceiros.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Visão de longo prazo (o que se constrói)</h3>
+        <ul>
+          <li><b>Autoridade orgânica:</b> SEO + blog + conteúdo autoral = crescimento sem depender de anúncio.</li>
+          <li><b>Independência:</b> se um dia a rede cair, mudar regras ou perder alcance, o site continua.</li>
+          <li><b>Acervo profissional:</b> um lugar para registrar fases, campanhas e momentos importantes.</li>
+          <li><b>Referência pública:</b> site vira base para imprensa, marcas, eventos e novas oportunidades.</li>
+        </ul>
+        <div class="hint">
+          É um ativo digital que tende a ficar mais valioso com o tempo, porque acumula história e relevância.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ESTRUTURA DO SITE -->
+<section class="section" id="estrutura">
+  <div class="section-head">
+    <div>
+      <h2>3. O Site da Rafa Nunes — Estrutura principal</h2>
+      <p class="lead">
+        Aqui está a estrutura pensada para contar história, organizar conteúdo e criar um fluxo profissional de contatos, propostas e parcerias — sem confusão e sem depender de directs.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p class="lead">
+      Estrutura completa para contar história, organizar conteúdo, elevar autoridade e criar um fluxo profissional de contatos, propostas e parcerias.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Página Inicial — Quem é Rafa Nunes</h3>
+        <ul>
+          <li><b>Apresentação real e humana:</b> história, trajetória e personalidade.</li>
+          <li><b>Momento atual:</b> fase da vida, família e projetos.</li>
+          <li><b>Organização visual:</b> fotos, vídeos e destaques com estética premium.</li>
+          <li><b>Narrativa controlada:</b> o visitante entende “quem é a Rafa” em poucos segundos.</li>
+        </ul>
+        <div class="hint">
+          Esta página é a “porta de entrada” oficial: rápida, bonita e objetiva.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Blog da Rafa Nunes (crescimento no Google)</h3>
+        <ul>
+          <li><b>Editor completo:</b> criar posts com título, texto e imagem de forma simples.</li>
+          <li><b>SEO:</b> posts viram “páginas” indexadas no Google.</li>
+          <li><b>Reaproveitamento:</b> um post do blog vira vários posts para Instagram.</li>
+          <li><b>Autoridade:</b> conteúdo autoral aumenta credibilidade e presença orgânica.</li>
+        </ul>
+        <div class="hint">
+          O blog funciona como “motor de busca”: quanto mais conteúdo, mais o nome aparece.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Galeria e Conteúdo Visual</h3>
+        <ul>
+          <li><b>Galeria organizada:</b> fotos e momentos em uma apresentação profissional.</li>
+          <li><b>Espaço para vídeos:</b> campanhas, registros e conteúdos especiais.</li>
+          <li><b>Preparado para crescer:</b> novas fases e projetos entram sem bagunçar nada.</li>
+        </ul>
+        <div class="hint">
+          Tudo fica “apresentável”, sem depender de ficar procurando post antigo.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Área de Parcerias e Assessoria</h3>
+        <ul>
+          <li><b>Receber propostas:</b> marcas e parceiros entram em um fluxo organizado.</li>
+          <li><b>Filtrar curiosos:</b> formulário e estrutura reduzem mensagens sem seriedade.</li>
+          <li><b>Centralizar contato profissional:</b> evita sobrecarga em WhatsApp e Instagram.</li>
+          <li><b>Melhor impressão:</b> empresa gosta quando existe um canal oficial e claro.</li>
+        </ul>
+        <div class="hint">
+          Isso economiza tempo e aumenta a qualidade das oportunidades recebidas.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Agenda e “Converse Comigo”</h3>
+        <ul>
+          <li><b>Formulário inteligente:</b> capta o que importa e direciona para o canal certo.</li>
+          <li><b>Captação organizada:</b> dados ficam salvos para análise e acompanhamento.</li>
+          <li><b>Redirecionamento:</b> WhatsApp ou e-mail dependendo do tipo de contato.</li>
+          <li><b>Controle total:</b> tudo configurável no painel administrativo.</li>
+        </ul>
+        <div class="hint">
+          Isso transforma “mensagem solta” em contato profissional rastreável.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Presença oficial no Google</h3>
+        <ul>
+          <li><b>O site vira referência principal.</b></li>
+          <li><b>“Pesquise no Google: Rafa Nunes.”</b></li>
+          <li><b>Encontrabilidade:</b> sem depender de termos específicos ou sorte.</li>
+          <li><b>Organização:</b> identidade e autoridade digital consistentes.</li>
+        </ul>
+        <div class="hint">
+          O objetivo é: quando alguém pesquisar, encontrar algo forte e oficial — sempre.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PAINEL ADMIN -->
+<section class="section" id="painel">
+  <div class="section-head">
+    <div>
+      <h2>4. Painel Administrativo Exclusivo</h2>
+      <p class="lead">
+        O diferencial não é só ter um site bonito. É ter um sistema por trás que permite autonomia: a Rafa consegue atualizar e controlar tudo sem depender de ninguém.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p class="lead">
+      A Rafa terá acesso a um painel administrativo próprio, onde poderá gerenciar conteúdo, organizar propostas e controlar o ecossistema do site com autonomia.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>O que a Rafa poderá gerenciar</h3>
+        <ul>
+          <li><b>Blog:</b> criar e editar posts.</li>
+          <li><b>Textos e imagens:</b> atualizar páginas e conteúdos.</li>
+          <li><b>Propostas:</b> receber e organizar parcerias.</li>
+          <li><b>Mensagens:</b> visualizar contatos que chegam pelo site.</li>
+          <li><b>Galeria:</b> adicionar ou atualizar imagens e vídeos.</li>
+          <li><b>Links e redes sociais:</b> manter tudo atualizado sem depender de suporte.</li>
+        </ul>
+        <div class="hint">
+          Isso dá liberdade total: o site acompanha a Rafa em qualquer fase.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Recursos extras do painel</h3>
+        <ul>
+          <li><b>Enquetes públicas:</b> interação com o público.</li>
+          <li><b>Captação de e-mails:</b> base para comunidade e ações futuras.</li>
+          <li><b>Estrutura para e-mail marketing:</b> pronta para quando fizer sentido.</li>
+          <li><b>Visual simples e organizado:</b> feito para usar rápido no dia a dia.</li>
+        </ul>
+        <div class="hint">
+          O painel não é “complexo”. É prático, bonito e pensado para rotina.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. AVATAR 3D -->
+<section class="section" id="avatar">
+  <div class="section-head">
+    <div>
+      <h2>5. Avatar 3D Exclusivo da Rafa Nunes</h2>
+      <p class="lead">
+        O avatar não é apenas um desenho bonito. É uma identidade digital escalável — uma “persona” que pode gerar conteúdo sempre, com consistência visual e impacto.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p class="lead">
+      Será criado um avatar 3D exclusivo da Rafa, inspirado no conceito de personagens digitais de grandes marcas (como a Magalu), para ampliar presença, conteúdo e identidade visual.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Usos do avatar 3D (na prática)</h3>
+        <ul>
+          <li><b>Stories animados:</b> presença diária sem depender de gravação toda hora.</li>
+          <li><b>Vídeos curtos:</b> avisos, chamadas e conteúdos rápidos.</li>
+          <li><b>PNGs prontos:</b> figurinhas e imagens para story com estética premium.</li>
+          <li><b>Avisos temáticos:</b> “pedido a caminho”, “agradecemos”, “Deus abençoe”, etc.</li>
+          <li><b>Conteúdos especiais:</b> cenários, temas e campanhas.</li>
+        </ul>
+        <div class="hint">
+          O avatar vira uma ferramenta de comunicação — sempre pronta para uso.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Exemplos de conteúdo (ideias prontas)</h3>
+        <ul>
+          <li><b>Frases da Rafa:</b> o avatar “falando” com personalidade.</li>
+          <li><b>Temas sazonais:</b> Natal, datas especiais e campanhas.</li>
+          <li><b>Tema cassino/slots:</b> cenas 3D para criativos únicos.</li>
+          <li><b>Integração com motion:</b> parallax, títulos 3D, efeitos premium.</li>
+        </ul>
+        <div class="hint">
+          Isso dá consistência visual e mantém o conteúdo “sempre com cara de marca”.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Avatar do marido (conteúdo complementar)</h3>
+        <ul>
+          <li>Avatar 3D inspirado no marido.</li>
+          <li>Conteúdos com o bordão “Bom dia com Jesus”.</li>
+          <li>Uso em imagens, vídeos e stories.</li>
+          <li>Forte conexão emocional com o público.</li>
+        </ul>
+        <div class="hint">
+          Conteúdo familiar cria identificação e reforça vínculo com a audiência.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Produção contínua (biblioteca)</h3>
+        <ul>
+          <li><b>Variações:</b> roupas, poses e expressões.</li>
+          <li><b>Cenários temáticos:</b> neve, cidade, Paris, cassino, etc.</li>
+          <li><b>Entrega em formatos úteis:</b> PNG para story + vídeos curtos para Reels.</li>
+          <li><b>Conteúdo constante:</b> pronto para manter rotina de stories premium.</li>
+        </ul>
+        <div class="hint">
+          O objetivo é ter uma “biblioteca” que facilita o conteúdo e melhora o padrão visual.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SOB DEMANDA -->
+<section class="section" id="sobdemanda">
+  <div class="section-head">
+    <div>
+      <h2>6. Conteúdo Sob Demanda (diferencial)</h2>
+      <p class="lead">
+        Aqui está o diferencial mais forte: a Rafa pode pedir conteúdos específicos conforme necessidade — e a MyndVerse produz e entrega dentro da parceria.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p class="lead">
+      A Rafa poderá solicitar conteúdos sob demanda. A MyndVerse analisa o momento, produz e entrega sem custo, como parte da parceria.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Exemplos de pedidos</h3>
+        <ul>
+          <li>“Quero um avatar falando isso”.</li>
+          <li>“Quero um avatar com essa roupa”.</li>
+          <li>“Quero um avatar temático”.</li>
+          <li>“Quero um vídeo animado para stories”.</li>
+        </ul>
+        <div class="hint">
+          É como ter uma mini-produção criativa pronta para quando a Rafa precisar.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Resultado prático</h3>
+        <ul>
+          <li><b>Conteúdo constante e exclusivo</b> sem depender de gravação toda hora.</li>
+          <li><b>Material pronto</b> para story, campanhas e posts.</li>
+          <li><b>Identidade forte:</b> tudo com a mesma “cara premium”.</li>
+          <li><b>Execução rápida:</b> direção criativa + entrega técnica.</li>
+        </ul>
+        <div class="hint">
+          Isso acelera a rotina de conteúdo e mantém a presença sempre ativa.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 + 8. PARCERIA -->
+<section class="section" id="parceria">
+  <div class="section-head">
+    <div>
+      <h2>7. O que a MyndVerse recebe em troca + 8. Programa de Comissão</h2>
+      <p class="lead">
+        A parceria é simples: a Rafa não paga nada. A MyndVerse entrega um projeto completo como presente.
+        Em troca, a MyndVerse ganha prova social real, demonstração pública e indicações orgânicas — com um modelo de comissão que recompensa a Rafa.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <p class="lead">
+      Não há pagamento financeiro. A parceria funciona por conteúdo orgânico estratégico e demonstrações reais, com benefício adicional de comissão por projetos fechados via indicação.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Como a parceria funciona (de forma leve e natural)</h3>
+        <ul>
+          <li><b>Stories mencionando a MyndVerse:</b> mostrando que existe uma equipe por trás do projeto.</li>
+          <li><b>Demonstração do site da Rafa:</b> reforça profissionalismo e cria autoridade.</li>
+          <li><b>Conteúdos mostrando os avatares:</b> prova real do diferencial e do nível premium.</li>
+          <li><b>Indicação orgânica:</b> “quem fez foi a MyndVerse” — sem forçar, sem exagero.</li>
+          <li><b>Postagens combinadas:</b> sem excesso e respeitando o estilo da Rafa.</li>
+        </ul>
+        <div class="hint">
+          O foco não é “propaganda”. É mostrar um projeto real, bonito, que naturalmente chama atenção.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Programa de Comissão (ganha-ganha)</h3>
+        <ul>
+          <li>Toda pessoa que chegar à MyndVerse por indicação da Rafa Nunes e fechar projetos (a partir de R$ 2.500,00) gera comissão para a Rafa.</li>
+          <li>A Rafa se torna parceira oficial da MyndVerse.</li>
+          <li>Rosto de projetos criativos.</li>
+          <li>Parte ativa do crescimento da marca.</li>
+        </ul>
+        <div class="hint">
+          Ou seja: além de receber o projeto como presente, a Rafa ainda pode lucrar com indicações futuras.
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 
-    <!-- GALERIA -->
-    <section class="section" id="galeria">
-      <div class="section-head">
-        <div>
-          <h2>Galeria do Avatar — Referências visuais</h2>
-          <p class="lead">
-            Abaixo está uma galeria de avatares e cenas 3D de referência. Importante: este é um modelo 3D renderizado com aproximadamente 30% de semelhança na aparência real da Rafa neste momento.
-            Caso a parceria seja confirmada, será realizado um ensaio fotográfico para modelagem 3D com alta semelhança, permitindo criação de avatares 3D, vídeos animados e figurinhas personalizadas para story.
-          </p>
-        </div>
-        <div class="mini-tag"><b>Dica:</b> clique nas imagens para ampliar</div>
-      </div>
 
-     
-
-      <div class="section-body">
-        <div class="gallery">
-          <figure class="shot s1" data-title="Torre / referência visual" data-src="https://ustreggl.sirv.com/torre%20eifel.png">
-            <img src="https://ustreggl.sirv.com/torre%20eifel.png" alt="Torre Eiffel - referência" />
-            <figcaption class="cap">Referência visual • composição e atmosfera premium</figcaption>
-          </figure>
-
-          <figure class="shot s2" data-title="Rafa Nunes (perfil)" data-src="https://ustreggl.sirv.com/rafa%20nunes%20perfil.png">
-            <img src="https://ustreggl.sirv.com/rafa%20nunes%20perfil.png" alt="Rafa Nunes - perfil" />
-            <figcaption class="cap">Avatar / Perfil • base para identidade digital e presença oficial</figcaption>
-          </figure>
-
-          <figure class="shot s3" data-title="Cena 777" data-src="https://ustreggl.sirv.com/rafa777.png">
-            <img src="https://ustreggl.sirv.com/rafa777.png" alt="Cena 777" />
-            <figcaption class="cap">Tema cassino/slots • visual 3D para conteúdos especiais</figcaption>
-          </figure>
-
-          <figure class="shot s4" data-title="Cartas / Cassino" data-src="https://ustreggl.sirv.com/cartas.png">
-            <img src="https://ustreggl.sirv.com/cartas.png" alt="Cartas de cassino" />
-            <figcaption class="cap">Conteúdos temáticos • campanhas, datas, criativos e storytelling</figcaption>
-          </figure>
-
-          <figure class="shot s5" data-title="Iphone / Conteúdo" data-src="https://ustreggl.sirv.com/iphone.png">
-            <img src="https://ustreggl.sirv.com/iphone.png" alt="Iphone - conteúdo" />
-            <figcaption class="cap">Assets para stories • PNGs, avisos, conteúdos rápidos e premium</figcaption>
-          </figure>
-        </div>
-
-        
-
-        <div class="grid2" style="margin-top:16px;">
-          <div class="card">
-            <h3>Modelo atual (referência)</h3>
-            <ul>
-              <li>Modelo 3D renderizado com ~30% de semelhança visual neste estágio.</li>
-              <li>Uso inicial: apresentação, testes de linguagem visual e conteúdos conceituais.</li>
-            </ul>
-            <div class="hint">
-              Objetivo: validar o estilo e o formato de produção sob demanda.
-            </div>
-          </div>
-          <div class="card">
-            <h3>Modelo final (com ensaio fotográfico)</h3>
-            <ul>
-              <li>Ensaio fotográfico para base de modelagem com maior fidelidade.</li>
-              <li>Avatar altamente semelhante para vídeos animados, figurinhas e campanhas.</li>
-              <li>Criação de biblioteca de poses, roupas e temas sazonais.</li>
-            </ul>
-            <div class="hint">
-              Resultado: uma “persona digital” de alto nível, como referência oficial.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-
-    <!-- 1. VISÃO -->
-    <section class="section" id="visao">
-      <div class="section-head">
-        <div>
-          <h2>1. Visão do Projeto</h2>
-          <p class="lead">
-            A MyndVerse propõe criar um site institucional premium e exclusivo para a Rafa Nunes, estimado em R$ 9.500,00 ou mais em valor de mercado, entregue 100% como presente, sem custo financeiro.
-            O objetivo é elevar a presença digital da Rafa para um novo nível de autoridade, organização, visibilidade e profissionalismo, indo além das redes sociais.
-            Este projeto não é apenas um site. É a construção de um ecossistema digital próprio, que acompanha a Rafa no presente e no futuro.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>O que é (na prática)</h3>
-            <ul>
-              <li>Um endereço oficial da Rafa na internet, com narrativa controlada.</li>
-              <li>Um sistema para organizar conteúdo, propostas, parcerias e agenda.</li>
-              <li>Um centro de autoridade: “Pesquise no Google: Rafa Nunes.”</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>O que muda</h3>
-            <ul>
-              <li>Presença além do Instagram, com domínio e estrutura própria.</li>
-              <li>Visibilidade orgânica e posicionamento de marca pessoal.</li>
-              <li>Base para crescimento e projetos futuros, sem depender de plataformas.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. IMPORTÂNCIA -->
-    <section class="section" id="importancia">
-      <div class="section-head">
-        <div>
-          <h2>2. Por que esse projeto é importante</h2>
-          <p class="lead">
-            Hoje, ao pesquisar “Rafa Nunes” no Google, praticamente não existem resultados sólidos fora do Instagram, e muitas vezes associados a termos que não representam sua imagem de forma estratégica.
-            Com um site próprio, a Rafa passa a: ser encontrada no Google pelo próprio nome; ter controle total da própria narrativa; construir autoridade fora das redes sociais; centralizar tudo em um único lugar oficial.
-            O site se torna a referência principal: “Pesquise no Google: Rafa Nunes.”
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>Ganhos diretos</h3>
-            <ul>
-              <li>Ser encontrada no Google pelo próprio nome.</li>
-              <li>Controle total da narrativa e identidade.</li>
-              <li>Autoridade fora das redes sociais.</li>
-              <li>Centralização: links, projetos, conteúdo, agenda e parcerias.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Visão de longo prazo</h3>
-            <ul>
-              <li>Construção de presença orgânica: SEO + conteúdo autoral.</li>
-              <li>Independência de algoritmos e quedas de alcance.</li>
-              <li>Um acervo profissional (história, momentos, campanhas).</li>
-              <li>Uma referência oficial para imprensa, marcas e público.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-
-  <h3>Referência - Rafa Nunes</h3>
-  <p class="hint">Avatares próprios aplicados a projetos reais e estratégias digitais.</p>
-</div>
-
-
-    <!-- 3. ESTRUTURA DO SITE -->
-    <section class="section" id="estrutura">
-      <div class="section-head">
-        <div>
-          <h2>3. O Site da Rafa Nunes — Estrutura principal</h2>
-          <p class="lead">
-            Estrutura completa para contar história, organizar conteúdo, elevar autoridade e criar um fluxo profissional de contatos, propostas e parcerias.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>Página Inicial — Quem é Rafa Nunes</h3>
-            <ul>
-              <li>História pessoal e trajetória.</li>
-              <li>Momento atual (gravidez, família, projetos).</li>
-              <li>Galeria de imagens profissional.</li>
-              <li>Conteúdo humano, verdadeiro e autoral.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Blog da Rafa Nunes</h3>
-            <ul>
-              <li>Blog profissional com editor completo.</li>
-              <li>Criar posts com imagem, título e texto.</li>
-              <li>Usar o blog como base de conteúdo.</li>
-              <li>Transformar posts do blog em posts para Instagram.</li>
-              <li>Melhorar SEO e visibilidade no Google.</li>
-            </ul>
-            <div class="hint">
-              O blog ajuda a construir autoridade digital e presença orgânica ao longo do tempo.
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Galeria e Conteúdo Visual</h3>
-            <ul>
-              <li>Galeria organizada de imagens e momentos.</li>
-              <li>Espaço para vídeos, campanhas e registros especiais.</li>
-              <li>Estrutura preparada para crescer com novos projetos.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Área de Parcerias e Assessoria</h3>
-            <ul>
-              <li>Receber propostas de parceria.</li>
-              <li>Filtrar contatos realmente interessados.</li>
-              <li>Centralizar mensagens profissionais.</li>
-              <li>Evitar sobrecarga no WhatsApp e Instagram.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Agenda e “Converse Comigo”</h3>
-            <ul>
-              <li>Formulário inteligente.</li>
-              <li>Captação de dados organizada.</li>
-              <li>Redirecionamento inteligente (WhatsApp ou e-mail).</li>
-              <li>Controle total pelo painel administrativo.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Presença oficial no Google</h3>
-            <ul>
-              <li>O site vira a referência principal.</li>
-              <li>“Pesquise no Google: Rafa Nunes.”</li>
-              <li>Encontrabilidade sem depender de termos específicos.</li>
-              <li>Organização de identidade e autoridade digital.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. PAINEL ADMIN -->
-    <section class="section" id="painel">
-      <div class="section-head">
-        <div>
-          <h2>4. Painel Administrativo Exclusivo</h2>
-          <p class="lead">
-            A Rafa terá acesso a um painel administrativo próprio, onde poderá gerenciar conteúdo, organizar propostas e controlar o ecossistema do site com autonomia.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>O que a Rafa poderá gerenciar</h3>
-            <ul>
-              <li>Gerenciar o blog.</li>
-              <li>Editar textos e imagens.</li>
-              <li>Controlar propostas de parceria.</li>
-              <li>Visualizar mensagens recebidas.</li>
-              <li>Gerenciar galeria de fotos.</li>
-              <li>Adicionar links sociais.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Recursos extras do painel</h3>
-            <ul>
-              <li>Criar enquetes públicas.</li>
-              <li>Captar usuários e e-mails para ações futuras.</li>
-              <li>Preparar base para e-mail marketing.</li>
-              <li>Visual simples, profissional e organizado.</li>
-            </ul>
-            <div class="hint">
-              Tudo de forma simples, visual e organizada.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. AVATAR 3D -->
-    <section class="section" id="avatar">
-      <div class="section-head">
-        <div>
-          <h2>5. Avatar 3D Exclusivo da Rafa Nunes</h2>
-          <p class="lead">
-            Será criado um avatar 3D exclusivo da Rafa, inspirado no conceito de personagens digitais de grandes marcas (como a Magalu), para ampliar presença, conteúdo e identidade visual.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>Usos do avatar 3D</h3>
-            <ul>
-              <li>Stories animados.</li>
-              <li>Vídeos curtos.</li>
-              <li>Imagens PNG para postagens.</li>
-              <li>Avisos temáticos.</li>
-              <li>Conteúdos especiais.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Exemplos de conteúdo</h3>
-            <ul>
-              <li>Avatar falando frases da Rafa.</li>
-              <li>Avatar em temas sazonais (Natal, campanhas, datas especiais).</li>
-              <li>Avatar representando a Rafa em conteúdos de cassino/slots.</li>
-              <li>Avatar integrado a vídeos e animações.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Avatar do marido (conteúdo complementar)</h3>
-            <ul>
-              <li>Avatar 3D inspirado no marido.</li>
-              <li>Conteúdos com o bordão “Bom dia com Jesus”.</li>
-              <li>Uso em imagens, vídeos e stories.</li>
-              <li>Forte conexão emocional com o público.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Produção contínua (biblioteca)</h3>
-            <ul>
-              <li>Criação de variações, roupas e cenários temáticos.</li>
-              <li>PNG para story, vídeos animados e cenas 3D.</li>
-              <li>Conteúdo de alto valor para rotina de stories.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. SOB DEMANDA -->
-    <section class="section" id="sobdemanda">
-      <div class="section-head">
-        <div>
-          <h2>6. Conteúdo Sob Demanda (diferencial)</h2>
-          <p class="lead">
-            A Rafa poderá solicitar conteúdos sob demanda. A MyndVerse analisa o momento, produz e entrega sem custo, como parte da parceria.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>Exemplos de pedidos</h3>
-            <ul>
-              <li>“Quero um avatar falando isso”.</li>
-              <li>“Quero um avatar com essa roupa”.</li>
-              <li>“Quero um avatar temático”.</li>
-              <li>“Quero um vídeo animado para stories”.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Resultado prático</h3>
-            <ul>
-              <li>Conteúdo constante e exclusivo.</li>
-              <li>Material pronto para stories e campanhas.</li>
-              <li>Identidade forte e memorável.</li>
-              <li>Direção criativa + execução técnica.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7 + 8. PARCERIA -->
-    <section class="section" id="parceria">
-      <div class="section-head">
-        <div>
-          <h2>7. O que a MyndVerse recebe em troca + 8. Programa de Comissão</h2>
-          <p class="lead">
-            Não há pagamento financeiro. A parceria funciona por conteúdo orgânico estratégico e demonstrações reais, com benefício adicional de comissão por projetos fechados via indicação.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>Como a parceria funciona</h3>
-            <ul>
-              <li>Stories mencionando a MyndVerse.</li>
-              <li>Demonstração do site da Rafa.</li>
-              <li>Conteúdos mostrando os avatares.</li>
-              <li>Indicação orgânica da MyndVerse como agência de marketing e tecnologia.</li>
-              <li>Postagens combinadas, sem excesso, respeitando o conteúdo da Rafa.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Programa de Comissão</h3>
-            <ul>
-              <li>Toda pessoa que chegar à MyndVerse por indicação da Rafa Nunes e fechar projetos (a partir de R$ 2.500,00) gera comissão para a Rafa.</li>
-              <li>A Rafa se torna parceira oficial da MyndVerse.</li>
-              <li>Rosto de projetos criativos.</li>
-              <li>Parte ativa do crescimento da marca.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CONCLUSÃO -->
-    <section class="section" id="conclusao">
-      <div class="section-head">
-        <div>
-          <h2>9. Conclusão</h2>
-          <p class="lead">
-            Uma entrega premium para a Rafa — e um posicionamento forte, real e verificável para a MyndVerse.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-body">
-        <div class="grid2">
-          <div class="card">
-            <h3>Este projeto entrega à Rafa</h3>
-            <ul>
-              <li>Um site premium avaliado em mais de R$ 9.500.</li>
-              <li>Controle total da imagem digital.</li>
-              <li>Autoridade no Google.</li>
-              <li>Conteúdo organizado.</li>
-              <li>Avatares 3D exclusivos.</li>
-              <li>Uma parceria que cresce junto.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>E para a MyndVerse</h3>
-            <ul>
-              <li>Prova social forte.</li>
-              <li>Alcance qualificado.</li>
-              <li>Conteúdo real e humano.</li>
-              <li>Posicionamento premium no mercado.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mini-tag" style="margin-top:14px;">
-          <b>Entrega:</b> site + blog + painel admin + ecossistema de conteúdo 3D • <b>Modelo:</b> parceria real, sem custo financeiro
-        </div>
-      </div>
-
-      <div class="footer">
-        Apresentação criada pela MyndVerse • Tema cassino premium • Conteúdo preservado integralmente conforme alinhado • Ajuste textos e links conforme necessidade antes de enviar.
-      </div>
-    </section>
-  </main>
-
-  <!-- Modal -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Visualização de imagem">
-    <div class="modal-card">
-      <div class="modal-top">
-        <div class="title" id="modalTitle">Visualização</div>
-        <button class="close" id="closeModal" aria-label="Fechar">Fechar ✕</button>
-      </div>
-      <div class="modal-img">
-        <img id="modalImg" alt="Imagem ampliada"/>
-      </div>
-      <div class="modal-caption" id="modalCaption">
-        Clique fora da imagem ou em “Fechar” para voltar.
-      </div>
+<!-- 9. CONCLUSÃO -->
+<section class="section" id="conclusao">
+  <div class="section-head">
+    <div>
+      <h2>9. Conclusão</h2>
+      <p class="lead">
+        O projeto entrega uma presença digital oficial para a Rafa e, ao mesmo tempo, cria uma prova social forte e verificável para a MyndVerse — um cenário onde os dois crescem juntos.
+      </p>
     </div>
   </div>
 
-  <script>
-    // Gallery modal
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalCaption = document.getElementById('modalCaption');
-    const closeModal = document.getElementById('closeModal');
+  <div class="section-body">
+    <p class="lead">
+      Uma entrega premium para a Rafa — e um posicionamento forte, real e verificável para a MyndVerse.
+    </p>
 
-    document.querySelectorAll('.shot').forEach(card => {
-      card.addEventListener('click', () => {
-        const src = card.getAttribute('data-src');
-        const title = card.getAttribute('data-title') || 'Visualização';
-        modalImg.src = src;
-        modalTitle.textContent = title;
-        modalCaption.textContent = 'Pré-visualização de referência 3D / composição. A identidade e o layout do projeto serão refinados na etapa final.';
-        modal.classList.add('open');
-      });
-    });
+    <div class="grid2">
+      <div class="card">
+        <h3>Este projeto entrega à Rafa</h3>
+        <ul>
+          <li>Um site premium avaliado em mais de R$ 9.500.</li>
+          <li>Controle total da imagem digital.</li>
+          <li>Autoridade no Google.</li>
+          <li>Conteúdo organizado.</li>
+          <li>Avatares 3D exclusivos.</li>
+          <li>Uma parceria que cresce junto.</li>
+        </ul>
+        <div class="hint">
+          Resultado: mais autoridade, mais organização, mais oportunidades e mais profissionalismo.
+        </div>
+      </div>
 
-    const close = () => modal.classList.remove('open');
-    closeModal.addEventListener('click', close);
-    modal.addEventListener('click', (e) => { if(e.target === modal) close(); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+      <div class="card">
+        <h3>E para a MyndVerse</h3>
+        <ul>
+          <li>Prova social forte.</li>
+          <li>Alcance qualificado.</li>
+          <li>Conteúdo real e humano.</li>
+          <li>Posicionamento premium no mercado.</li>
+        </ul>
+        <div class="hint">
+          Resultado: cases reais, demonstração pública e credibilidade de alto nível.
+        </div>
+      </div>
+    </div>
 
-    // Soft "casino" parallax shimmer on hero (subtle)
-    const hero = document.querySelector('.hero');
-    let raf = null;
-    window.addEventListener('mousemove', (e) => {
-      if(raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = null;
-        const rect = hero.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        hero.style.transform = `translate3d(${x*2}px, ${y*2}px, 0)`;
-      });
-    }, {passive:true});
-  </script>
+    <div class="mini-tag" style="margin-top:14px;">
+      <b>Entrega:</b> site + blog + painel admin + ecossistema de conteúdo 3D • <b>Modelo:</b> parceria real, sem custo financeiro
+    </div>
+  </div>
 
-  <script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('dragstart', e => e.preventDefault());
-</script>
 
-window.addEventListener('keyup', e => {
-  if (e.key === 'PrintScreen') {
-    document.body.style.filter = 'blur(20px)';
-    setTimeout(() => {
-      document.body.style.filter = 'none';
-    }, 800);
-  }
+
+
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.carousel').forEach(carousel=>{
+    const track=carousel.querySelector('.carousel-track');
+    const prev=carousel.querySelector('.prev');
+    const next=carousel.querySelector('.next');
+    if(!track)return;
+    const scroll=()=>track.clientWidth*0.9;
+    prev.onclick=()=>track.scrollBy({left:-scroll(),behavior:'smooth'});
+    next.onclick=()=>track.scrollBy({left:scroll(),behavior:'smooth'});
+  });
 });
-
+</script>
 
 </body>
 </html>
