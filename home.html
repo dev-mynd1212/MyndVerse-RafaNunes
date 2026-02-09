@@ -41,6 +41,17 @@ header{
   background:rgba(7,6,10,.85);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
+.hero video {
+  width: 100%;
+  max-width: 220px;        /* ideal para iPhone */
+  aspect-ratio: 9 / 16;   /* vídeo vertical */
+  object-fit: cover;
+  border-radius: 18px;
+  background: #000;
+  display: block;
+  margin: 14px auto;
+}
+
 
 .nav-inner{
   max-width:var(--max);
@@ -200,14 +211,24 @@ ul{padding-left:18px;color:var(--muted);font-size:13.5px}
 
 <section class="hero">
   <h1>Uma presença digital oficial, premium e inesquecível — além das redes.</h1>
+
   <p>
     A MyndVerse propõe criar um site institucional premium e exclusivo para a Rafa Nunes,
     estimado em R$ 9.500,00 ou mais em valor de mercado, entregue 100% como presente,
     sem custo financeiro.
   </p>
 
-  <video src="https://ustreggl.sirv.com/rafa%20loop.mp4" autoplay loop muted playsinline></video>
+  <video
+    src="https://ustreggl.sirv.com/rafa%20loop.mp4"
+    poster="https://ustreggl.sirv.com/loading.jpg"
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="auto">
+  </video>
 </section>
+
 
 <!-- GALERIA EM CARROSSEL -->
 <section>
@@ -290,18 +311,29 @@ ul{padding-left:18px;color:var(--muted);font-size:13.5px}
         </p>
       </div>
 
-      <div class="card">
-        <video src="https://ustreggl.sirv.com/mynd.mp4" autoplay loop muted playsinline style="width:100%;border-radius:14px;margin-bottom:10px;"></video>
-        <h3>MyndVerse — Luna</h3>
-        <p class="hint">
-          A <b>Luna</b> é o avatar oficial da MyndVerse e representa a aplicação prática
-          dessa estratégia em projetos reais.
-          Ela é utilizada em vídeos, apresentações, conteúdos institucionais e demonstrações,
-          provando que o avatar não é apenas conceito,
-          mas uma ferramenta funcional e escalável dentro de um ecossistema digital.
-        </p>
-      </div>
-    </div>
+   <div class="card">
+  <video
+    src="https://ustreggl.sirv.com/mynd.mp4"
+    poster="https://ustreggl.sirv.com/loading.jpg"
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="auto"
+    style="width:100%;border-radius:14px;margin-bottom:10px;">
+  </video>
+
+  <h3>MyndVerse — Luna</h3>
+
+  <p class="hint">
+    A <b>Luna</b> é o avatar oficial da MyndVerse e representa a aplicação prática
+    dessa estratégia em projetos reais.
+    Ela é utilizada em vídeos, apresentações, conteúdos institucionais e demonstrações,
+    provando que o avatar não é apenas conceito,
+    mas uma ferramenta funcional e escalável dentro de um ecossistema digital.
+  </p>
+</div>
+
 
     <div class="mini-tag" style="margin-top:14px;">
       <b>Conclusão:</b> o avatar da Rafa segue o mesmo conceito adotado por grandes marcas —
