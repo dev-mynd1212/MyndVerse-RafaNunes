@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plano de Crescimento — Rafa Nunes × MyndVerse</title>
+
+  <meta name="theme-color" content="#07060a" />
+  <meta property="og:title" content="Plano de Crescimento — Rafa Nunes × MyndVerse" />
+  <meta property="og:description" content="Estratégia, retenção, distribuição, automação e site oficial para romper os 19K e sair do regional." />
+  <meta property="og:image" content="https://ustreggl.sirv.com/torre%20eifel.png" />
+
+  <style>
+    :root{
+      --bg0:#05040a;
+      --bg1:#07060a;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --stroke: rgba(255,255,255,.12);
+      --stroke2: rgba(255,255,255,.09);
+
+      --text: rgba(255,255,255,.95);
+      --muted: rgba(255,255,255,.72);
+      --soft: rgba(255,255,255,.10);
+
+      --gold:#D6B15E;
+      --gold2:#f3d58a;
+
+      --violet:#a78bfa;
+      --aqua:#7cf7ff;
+      --pink:#fb7185;
+
+      --radius: 22px;
+      --radius2: 16px;
+
+      --max: 1120px;
+      --shadow: 0 24px 70px rgba(0,0,0,.55);
+      --shadow2: 0 12px 30px rgba(0,0,0,.35);
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1100px 520px at 12% -10%, rgba(167,139,250,.22), transparent 58%),
+        radial-gradient(900px 470px at 88% 0%, rgba(124,247,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 50% 115%, rgba(251,113,133,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    img,video{max-width:100%;display:block}
+    b{color:rgba(255,255,255,.94)}
+    small{color:rgba(255,255,255,.62)}
+
+    /* ambient */
+    .grain{
+      pointer-events:none;
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.14;
+      transform:translateZ(0);
+    }
+    .glow{
+      position:fixed;
+      inset:-140px -90px auto -90px;
+      height:360px;
+      background:radial-gradient(closest-side, rgba(214,177,94,.22), transparent 72%);
+      filter:blur(14px);
+      opacity:.60;
+      pointer-events:none;
+      transform:translateZ(0);
+    }
+
+    /* top header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:80;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(7,6,10,.74);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      max-width:var(--max);
+      margin:auto;
+      padding:12px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .brand strong{
+      letter-spacing:.45px;
+      font-size:12px;
+      text-transform:uppercase;
+      opacity:.92;
+    }
+    .pill{
+      display:flex; align-items:center; gap:8px;
+      border:1px solid var(--stroke2);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      color:var(--muted);
+      box-shadow: var(--shadow2);
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
+      box-shadow: 0 0 18px rgba(214,177,94,.55);
+    }
+
+    nav{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding-bottom:2px;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav::-webkit-scrollbar{display:none}
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      border:1px solid var(--stroke2);
+      background:rgba(0,0,0,.18);
+      padding:8px 10px;
+      border-radius:12px;
+      font-size:13px;
+      white-space:nowrap;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    }
+    nav a:hover{transform: translateY(-1px); border-color: var(--stroke); background: rgba(255,255,255,.06); color: rgba(255,255,255,.85);}
+    nav a.active{
+      color: rgba(255,255,255,.95);
+      border-color: rgba(214,177,94,.55);
+      background: linear-gradient(180deg, rgba(214,177,94,.20), rgba(214,177,94,.06));
+      box-shadow: 0 10px 26px rgba(214,177,94,.12);
+    }
+
+    /* page */
+    .wrap{
+      max-width:var(--max);
+      margin:auto;
+      padding: 18px 16px 84px;
+    }
+
+    section{
+      margin-top:16px;
+      border-radius: 26px;
+      overflow:hidden;
+      border:1px solid var(--stroke2);
+      background:
+        radial-gradient(900px 260px at 0% 0%, rgba(255,255,255,.08), transparent 56%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+      position:relative;
+    }
+    section::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(820px 280px at 80% -20%, rgba(124,247,255,.10), transparent 56%);
+      pointer-events:none;
+      opacity:.85;
+    }
+    .section-head{padding:18px 18px 8px; position:relative; z-index:2;}
+    .section-body{padding: 10px 18px 18px; position:relative; z-index:2;}
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      letter-spacing:.35px;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.78);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke2);
+      background: rgba(0,0,0,.20);
+    }
+    .kicker b{color: rgba(214,177,94,.92); font-weight:750;}
+    .kline{width:28px; height:1px; background: linear-gradient(90deg, rgba(214,177,94,.95), transparent);}
+
+    h1{
+      font-size:30px;
+      line-height:1.12;
+      margin:10px 0 10px;
+      letter-spacing:-.6px;
+    }
+    h2{font-size:18px;margin:0}
+    h3{font-size:15px;margin:0 0 6px}
+
+    p{
+      font-size:14px;
+      line-height:1.72;
+      color:var(--muted);
+      margin: 8px 0 0;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+
+    .hero-card{
+      border:1px solid var(--stroke2);
+      background: rgba(0,0,0,.22);
+      border-radius: 22px;
+      padding:14px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(700px 260px at 0% 0%, rgba(214,177,94,.14), transparent 60%);
+      opacity:.7;
+      pointer-events:none;
+    }
+    .hero-card > *{position:relative; z-index:2;}
+
+    .hero video{
+      width:100%;
+      max-width:240px;
+      aspect-ratio:9/16;
+      object-fit:cover;
+      border-radius: 20px;
+      background:#000;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      margin: 0 auto;
+    }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+    .btn{
+      border:1px solid var(--stroke2);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      padding:10px 12px;
+      border-radius: 14px;
+      font-size:13px;
+      text-decoration:none;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: var(--stroke);}
+    .btn.primary{
+      border-color: rgba(214,177,94,.55);
+      background: linear-gradient(180deg, rgba(214,177,94,.25), rgba(214,177,94,.08));
+      box-shadow: 0 18px 40px rgba(214,177,94,.10);
+    }
+    .btn .ic{
+      width:26px;height:26px;border-radius:10px;
+      display:grid; place-items:center;
+      background: rgba(0,0,0,.22);
+      border:1px solid var(--stroke2);
+      font-family: var(--mono);
+      font-size:12px;
+      color: rgba(255,255,255,.85);
+    }
+
+    .mini-metrics{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+    .metric{
+      border:1px solid var(--stroke2);
+      background: rgba(0,0,0,.22);
+      border-radius: 16px;
+      padding:12px;
+    }
+    .metric .label{
+      font-size:12px;
+      color: rgba(255,255,255,.70);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .metric .value{
+      font-size:18px;
+      margin-top:6px;
+      letter-spacing:-.3px;
+    }
+    .metric .value span{
+      color: rgba(214,177,94,.92);
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(214,177,94,.55), rgba(255,255,255,.12), transparent);
+      margin: 12px 0;
+      opacity:.85;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    .card{
+      padding:14px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.22);
+      border:1px solid var(--stroke2);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: radial-gradient(520px 180px at 0% 0%, rgba(214,177,94,.12), transparent 58%);
+      opacity:.7;
+      pointer-events:none;
+    }
+    .card > *{position:relative; z-index:2;}
+
+    ul{
+      padding-left:18px;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.72;
+      margin:8px 0 0;
+    }
+
+    /* flow diagram */
+    .flow{
+      display:grid;
+      gap:10px;
+    }
+    .flow-step{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      border:1px solid var(--stroke2);
+      background: rgba(0,0,0,.22);
+      border-radius: 18px;
+      padding:12px;
+    }
+    .num{
+      width:34px;height:34px;border-radius:12px;
+      display:grid; place-items:center;
+      border:1px solid rgba(214,177,94,.38);
+      background: rgba(214,177,94,.12);
+      color: rgba(255,255,255,.92);
+      font-family: var(--mono);
+      font-size:12px;
+      flex:0 0 auto;
+      box-shadow: 0 12px 28px rgba(214,177,94,.08);
+    }
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      border:1px solid var(--stroke2);
+      background: rgba(255,255,255,.05);
+      border-radius: 999px;
+      padding:6px 10px;
+      font-size:12px;
+      color: rgba(255,255,255,.76);
+      margin-top:10px;
+    }
+    .badge i{
+      width:7px;height:7px;border-radius:999px;
+      background: rgba(124,247,255,.85);
+      box-shadow:0 0 12px rgba(124,247,255,.32);
+      display:inline-block;
+    }
+
+    /* carousel */
+    .carousel{position:relative;}
+    .carousel-track{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      padding-bottom:2px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .carousel-track::-webkit-scrollbar{display:none}
+    .slide{
+      flex:0 0 85%;
+      scroll-snap-align:center;
+      border-radius: 18px;
+      overflow:hidden;
+      position:relative;
+      background:#000;
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      min-height: 220px;
+      transform: translateZ(0);
+    }
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.92;
+      transform: scale(1.01);
+    }
+    .caption{
+      position:absolute;
+      left:10px;
+      right:10px;
+      bottom:10px;
+      background: rgba(0,0,0,.60);
+      border:1px solid rgba(255,255,255,.12);
+      padding:8px 10px;
+      border-radius: 14px;
+      font-size:12px;
+      color: rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .carousel button{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background: rgba(0,0,0,.65);
+      border:1px solid rgba(255,255,255,.14);
+      color:#fff;
+      font-size:22px;
+      border-radius: 14px;
+      padding:8px 10px;
+      cursor:pointer;
+      transition: transform .15s ease, background .2s ease;
+      box-shadow: var(--shadow2);
+    }
+    .carousel button:hover{transform:translateY(-50%) scale(1.03); background: rgba(255,255,255,.08);}
+    .prev{left:8px}
+    .next{right:8px}
+
+    /* FAQ */
+    details{
+      border:1px solid var(--stroke2);
+      background: rgba(0,0,0,.22);
+      border-radius: 18px;
+      padding:12px;
+    }
+    details + details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-size:14px;
+      color: rgba(255,255,255,.90);
+    }
+    summary::-webkit-details-marker{display:none}
+    .chev{
+      width:28px;height:28px;border-radius:12px;
+      display:grid; place-items:center;
+      border:1px solid var(--stroke2);
+      background: rgba(255,255,255,.05);
+      font-family: var(--mono);
+      color: rgba(255,255,255,.75);
+      transition: transform .2s ease;
+      flex:0 0 auto;
+    }
+    details[open] .chev{transform: rotate(180deg)}
+    details p{margin:10px 2px 2px}
+
+    /* reveal */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .75s ease, transform .75s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.in{opacity:1; transform: translateY(0);}
+
+    /* footer */
+    footer{
+      margin-top:16px;
+      border-radius: 26px;
+      border:1px solid var(--stroke2);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      padding:18px;
+      color: rgba(255,255,255,.75);
+      position:relative;
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+    footer::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(740px 260px at 30% 0%, rgba(214,177,94,.14), transparent 58%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    footer > *{position:relative; z-index:2;}
+    .fineprint{
+      font-size:12px;
+      color: rgba(255,255,255,.62);
+      line-height:1.65;
+    }
+
+    @media(min-width: 900px){
+      .nav-inner{flex-direction:row; align-items:center; justify-content:space-between;}
+      .brand{justify-content:flex-start}
+      .hero-grid{grid-template-columns: 1.20fr .80fr; gap:16px;}
+      h1{font-size: 40px;}
+      .grid{grid-template-columns: 1fr 1fr;}
+      .slide{flex:0 0 32%;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal{transition:none}
+      nav a, .btn, .carousel button{transition:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow"></div>
+  <div class="grain"></div>
+
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <strong>MyndVerse × Plano de Crescimento (Rafa Nunes)</strong>
+        <div class="pill" title="Estratégia e execução completa para romper o regional.">
+          <span class="dot"></span>
+          <span>Operação em piloto automático</span>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <a href="#visao">Visão</a>
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#algoritmo">Algoritmo</a>
+        <a href="#plano">Plano</a>
+        <a href="#automacao">Automação</a>
+        <a href="#edicao">Edição</a>
+        <a href="#site">Site & Google</a>
+        <a href="#metodo">Método</a>
+        <a href="#conclusao">Conclusão</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO / VISÃO -->
+    <section id="visao" class="hero reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Plano de Crescimento</b> • Rafa Nunes</span>
+        <h1>Você não está travada por falta de conteúdo.<br/>Você está travada por falta de <span style="color:rgba(214,177,94,.92)">sistema</span>.</h1>
+        <p>
+          A MyndVerse entra como <b>agência estratégica</b> para assumir a operação e criar um caminho real:
+          <b>retenção</b> (as pessoas assistem), <b>distribuição</b> (o Instagram entrega), e <b>automação</b>
+          (transforma interesse em seguidores e comunidade).
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <h3>Contexto (o que muda tudo)</h3>
+            <p>
+              Você está vivendo uma fase intensa: gravidez de gêmeos + rotina de mãe. Isso não é “pausa”.
+              Isso é um período de <b>potência de marca</b> — se for conduzido com estratégia.
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="mini-metrics">
+              <div class="metric">
+                <div class="label">📌 Situação</div>
+                <div class="value"><span>19K</span> há ~2 anos</div>
+              </div>
+              <div class="metric">
+                <div class="label">🧠 Diagnóstico</div>
+                <div class="value">Conteúdo sem sistema</div>
+              </div>
+              <div class="metric">
+                <div class="label">⚡ Virada</div>
+                <div class="value">Retenção + Distribuição</div>
+              </div>
+              <div class="metric">
+                <div class="label">🤖 Execução</div>
+                <div class="value">Automação & fluxo</div>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn primary" href="#algoritmo"><span class="ic">01</span>Entender o algoritmo (simples)</a>
+              <a class="btn" href="#plano"><span class="ic">02</span>Ver o plano de ação</a>
+              <a class="btn" href="#site"><span class="ic">SEO</span>Por que o site muda tudo</a>
+            </div>
+
+            <span class="badge"><i></i> Meta: romper o regional e atingir novas audiências, com previsibilidade.</span>
+          </div>
+
+          <div>
+            <video
+              src="https://ustreggl.sirv.com/rafa%20loop.mp4"
+              poster="https://ustreggl.sirv.com/loading.jpg"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="auto">
+            </video>
+            <p style="text-align:center; margin-top:10px; font-size:12px; color:rgba(255,255,255,.65);">
+              Preview visual (mobile-first) • estética premium + ritmo
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAGNÓSTICO -->
+    <section id="diagnostico" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Diagnóstico</b> real</span>
+        <h2>O problema não é quantidade de posts. É falta de retenção, distribuição e automação.</h2>
+        <p>
+          Quando você posta, o Instagram “testa” o conteúdo. Se a resposta for morna,
+          ele para de entregar. Se a resposta for forte, ele expande para quem não te segue.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="grid">
+          <div class="card">
+            <h3>1) Falta de retenção</h3>
+            <p>
+              Se a pessoa não assiste até o final (ou não reassiste), o Instagram entende que o vídeo não “segurou”.
+              Resultado: entrega trava cedo.
+            </p>
+            <ul>
+              <li>Retenção é o “sinal” mais forte para o algoritmo.</li>
+              <li>Vídeos lentos, com pausas e sem ritmo → queda rápida.</li>
+              <li>Vídeos com ritmo e estímulo certo → entrega cresce.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>2) Falta de distribuição</h3>
+            <p>
+              O algoritmo começa distribuindo para parte dos seus seguidores.
+              Se esse grupo não reage, ele não “arrisca” mostrar para quem não segue.
+            </p>
+            <ul>
+              <li>O Instagram mede: visualização, tempo, curtida, comentário, compartilhamento e salvamento.</li>
+              <li>Se seguidores “pulam” o conteúdo, o algoritmo conclui: “não vale expandir”.</li>
+              <li>Sem expansão → você fica presa no regional.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>3) Falta de automação</h3>
+            <p>
+              Mesmo quando um vídeo vai bem, sem um sistema automático de “próximo passo”,
+              você perde seguidores que estavam prontos para entrar.
+            </p>
+            <ul>
+              <li>Automação transforma: interesse → DM → comunidade → seguidor fiel.</li>
+              <li>Ela reduz esforço e aumenta consistência.</li>
+              <li>Você cresce mesmo em fase de rotina mais difícil.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>4) Falta de estratégia</h3>
+            <p>
+              Postar “o que dá” é diferente de postar com objetivo claro.
+              Estratégia cria previsibilidade.
+            </p>
+            <ul>
+              <li>Conteúdo com meta (retenção, compartilhamento, conversão).</li>
+              <li>Calendário inteligente + repetição de formatos vencedores.</li>
+              <li>Sequências que constroem hábito no público.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALGORITMO -->
+    <section id="algoritmo" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Como o algoritmo</b> funciona</span>
+        <h2>O Instagram trabalha em 3 fases: Teste → Expansão → Aceleração.</h2>
+        <p>
+          De forma simples: ele testa um vídeo, mede a resposta, e decide se vale distribuir para fora da sua bolha.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="flow">
+
+          <div class="flow-step">
+            <div class="num">A</div>
+            <div>
+              <h3>Fase A — Teste (primeira entrega)</h3>
+              <p>
+                O Instagram mostra seu conteúdo para uma parte dos seus seguidores (e pessoas parecidas).
+                Aqui nasce o “sim” ou “não” do algoritmo.
+              </p>
+              <ul>
+                <li>Se muita gente pula → o algoritmo entende que não vale expandir.</li>
+                <li>Se muita gente assiste, salva, compartilha → o algoritmo prepara expansão.</li>
+              </ul>
+              <p>
+                <b>Ponto sensível:</b> quando o público inicial não é o público ideal, a resposta fica morna.
+                Isso trava a entrega logo no começo.
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">B</div>
+            <div>
+              <h3>Fase B — Expansão (fora da bolha)</h3>
+              <p>
+                Se o conteúdo “passa no teste”, ele começa a aparecer para quem <b>não te segue</b>.
+                É aqui que nasce crescimento real.
+              </p>
+              <ul>
+                <li>Expansão ocorre quando a retenção e os sinais sociais são fortes.</li>
+                <li>O vídeo começa a alcançar pessoas de outras cidades/estados.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">C</div>
+            <div>
+              <h3>Fase C — Aceleração (viralização controlada)</h3>
+              <p>
+                Quando o Instagram percebe valor consistente, ele “acelera”.
+                Agora o alcance cresce em ondas.
+              </p>
+              <ul>
+                <li>Repetição de formato vencedor aumenta previsibilidade.</li>
+                <li>Conteúdo com série (parte 1/2/3) aumenta retorno e retenção.</li>
+                <li>Distribuição paga (bem aplicada) ajuda a “dar partida” na expansão.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="card">
+          <h3>Por que perfis “regionais” travam?</h3>
+          <p>
+            Quando a maior parte da entrega vai para pessoas da mesma região, e esse público reage pouco,
+            o algoritmo aprende um padrão: “entrega baixa”.
+            <br />
+            A solução não é postar mais — é <b>mudar o sistema</b> para gerar sinais fortes no teste e expandir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANO -->
+    <section id="plano" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Plano MyndVerse</b></span>
+        <h2>O que a MyndVerse vai fazer: transformar conteúdo em sistema de crescimento.</h2>
+        <p>
+          Você continua criando conteúdo — mas agora com uma engenharia por trás:
+          retenção, distribuição e automação trabalhando juntas.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="grid">
+          <div class="card">
+            <h3>1) Direção estratégica (mensal)</h3>
+            <ul>
+              <li>Mapa de público: quem queremos atingir fora da região (perfil e interesse).</li>
+              <li>Formatos vencedores (repetição inteligente, sem ficar repetitivo).</li>
+              <li>Calendário e sequência de posts com objetivo claro.</li>
+              <li>Conteúdo “série” para aumentar retorno e tempo assistido.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>2) Produção e gravação (organizada)</h3>
+            <ul>
+              <li>Roteiros curtos: vídeos de 15–30s que prendem do começo ao fim.</li>
+              <li>Captação otimizada: gravações pontuais e planejadas.</li>
+              <li>Banco de cenas: gestação, bastidores, rotina, emoção, humor, autoridade.</li>
+              <li>Conteúdo “rápido e fácil” para manter frequência mesmo na gravidez.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>3) Distribuição estratégica (orgânico + aceleração)</h3>
+            <ul>
+              <li>Ajuste do “público inicial” (para o teste funcionar melhor).</li>
+              <li>Postagens com gatilhos de comentário e salvamento (sem parecer forçado).</li>
+              <li>Impulso de distribuição em conteúdos vencedores (para romper o regional).</li>
+              <li>Reforço de formatos com maior retenção (o que o algoritmo quer ver).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>4) Automação (para transformar interesse em seguidor)</h3>
+            <ul>
+              <li>Quando alguém comenta uma palavra-chave, recebe automaticamente uma mensagem.</li>
+              <li>Quando alguém demonstra interesse, recebe o “próximo passo” (link, grupo, canal, lista).</li>
+              <li>Captação de comunidade: você cria base própria (não depende só do algoritmo).</li>
+              <li>Automação = consistência (mesmo quando você está sem tempo).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOMAÇÃO -->
+    <section id="automacao" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Automação</b> na prática</span>
+        <h2>O segredo não é “dar vantagem”. É criar motivo real para a pessoa ficar perto.</h2>
+        <p>
+          A automação funciona como um “piloto automático” que transforma comentário em relacionamento.
+          Sem linguagem técnica — do jeito que o público entende.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="grid">
+          <div class="card">
+            <h3>Ideia 1 — Comunidade oficial (base própria)</h3>
+            <p>
+              Você cria um lugar onde as pessoas querem estar perto de você:
+              bastidores, novidades, avisos, momentos, prioridades.
+            </p>
+            <ul>
+              <li>CTA do vídeo: “Comenta <b>QUERO</b> que eu te mando o acesso.”</li>
+              <li>Automação envia DM + link da comunidade.</li>
+              <li>Você tem um “canal” seu: audiência fiel e recorrente.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Ideia 2 — Listas temáticas (conteúdo por interesse)</h3>
+            <p>
+              Em vez de “um link”, você cria uma lista que faz sentido para o público:
+              rotina, maternidade, cuidados, organização, estilo, etc.
+            </p>
+            <ul>
+              <li>Ex.: “lista do que eu uso / do que eu recomendo / do que eu testei”.</li>
+              <li>CTA: “Comenta <b>LISTA</b> que eu te envio.”</li>
+              <li>Isso aumenta comentário, retenção e seguidores reais.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Ideia 3 — Série com recompensa de conteúdo</h3>
+            <p>
+              Uma série curta em capítulos (parte 1/2/3) cria hábito e retorno.
+              O “ganho” é informação e emoção — não apenas prêmio.
+            </p>
+            <ul>
+              <li>CTA: “Quer a parte 2? Comenta <b>PARTE2</b>.”</li>
+              <li>Automação entrega a continuação + convida para seguir.</li>
+              <li>Isso cria repetição e acelera distribuição.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Ideia 4 — Sorteios nacionais (com propósito)</h3>
+            <p>
+              Sorteio funciona quando ele vira “evento” e quando o perfil já entrega valor.
+              O objetivo não é inflar: é atrair quem tem afinidade com você.
+            </p>
+            <ul>
+              <li>Regras simples: seguir + comentar palavra + entrar na comunidade.</li>
+              <li>Prêmio viável nacionalmente (digital/assinatura/vale/entrega).</li>
+              <li>Não vira “perfil de sorteio” quando existe constância de conteúdo.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="card">
+          <h3>Por que isso rompe a bolha?</h3>
+          <p>
+            Porque aumenta os sinais que o Instagram ama: <b>comentário</b> e <b>tempo assistido</b>.
+            Isso melhora a Fase A (teste), ativa a Fase B (expansão) e abre a Fase C (aceleração).
+            E a automação faz o pós-vídeo virar <b>seguidor</b> e <b>comunidade</b>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDIÇÃO -->
+    <section id="edicao" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Edição estratégica</b></span>
+        <h2>Retenção é engenharia: som, ritmo, cor, texto, corte e emoção.</h2>
+        <p>
+          A edição não é “enfeite”. É o que faz o vídeo ser impossível de pular.
+          Quanto maior a retenção, maior a distribuição.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="grid">
+
+          <div class="card">
+            <h3>Como a edição aumenta retenção</h3>
+            <ul>
+              <li><b>Hook (0–1s):</b> frase/visual forte no primeiro segundo.</li>
+              <li><b>Ritmo:</b> cortes e variações constantes (sem pausas longas).</li>
+              <li><b>Texto na tela:</b> ajuda a entender sem áudio e aumenta tempo assistido.</li>
+              <li><b>Micro-suspense:</b> “fica até o final que eu mostro…”</li>
+              <li><b>Loop invisível:</b> final que conecta no começo (replay).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Como som e música influenciam</h3>
+            <ul>
+              <li>Música cria emoção (conexão) e ritmo (atenção).</li>
+              <li>Efeitos sonoros pontuais reforçam momentos-chave.</li>
+              <li>Silêncio bem usado cria tensão e foco (contraste).</li>
+              <li>Áudio alinhado ao tema = maior compartilhamento.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Como cor e luz mudam percepção</h3>
+            <ul>
+              <li>Cor pode transmitir conforto, tensão, desejo, confiança.</li>
+              <li>Contraste alto destaca rosto, objeto e texto.</li>
+              <li>Luz “premium” aumenta credibilidade instantânea.</li>
+              <li>Identidade visual consistente cria marca (memória).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>O resultado (o que você vai ver no Instagram)</h3>
+            <ul>
+              <li>Aumento do tempo médio assistido.</li>
+              <li>Aumento de salvamentos e compartilhamentos.</li>
+              <li>Mais comentários (o algoritmo “ouve”).</li>
+              <li>Entrega fora da sua base (não seguidores).</li>
+              <li>Crescimento com consistência, não sorte.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SITE & GOOGLE -->
+    <section id="site" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Site oficial</b> & Google</span>
+        <h2>O site não é “pra bonito”. Ele cria tráfego orgânico fora do Instagram.</h2>
+        <p>
+          Instagram depende de algoritmo. Google depende de busca.
+          Quando alguém procura um tema, o Google pode entregar você — sem ser regional.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="grid">
+          <div class="card">
+            <h3>Como o Google distribui (simplificado)</h3>
+            <p>
+              O Google funciona como um “mapa” da internet.
+              Quando alguém pesquisa algo, ele tenta entregar a melhor resposta.
+            </p>
+            <ul>
+              <li>Você cria páginas/artigos com temas que as pessoas pesquisam.</li>
+              <li>O Google lê, entende e começa a testar sua página em resultados.</li>
+              <li>Se as pessoas clicam e ficam, sua página sobe.</li>
+              <li>Quanto mais você acerta tema + qualidade, mais tráfego entra.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Por que isso é perfeito para você</h3>
+            <ul>
+              <li>Você atrai público de fora da região (qualquer lugar do Brasil).</li>
+              <li>Você vira “referência oficial” (autoridade).</li>
+              <li>Seu nome começa a aparecer no Google de forma organizada.</li>
+              <li>O tráfego do site alimenta o Instagram (seguidores novos).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Blog (estratégico) = seguidores indiretos</h3>
+            <p>
+              O blog é uma máquina silenciosa:
+              temas certos + consistência = tráfego recorrente.
+            </p>
+            <ul>
+              <li>Ex.: “diário da gestação” (com estrutura e títulos fortes).</li>
+              <li>Ex.: “rotina real” (conteúdo que pessoas pesquisam).</li>
+              <li>Ex.: “lista e guias” (conteúdo altamente buscável).</li>
+              <li>CTA no artigo: “me acompanha no Instagram / comunidade oficial”.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>SEO (o que a MyndVerse faz)</h3>
+            <ul>
+              <li>Títulos e estrutura para o Google entender.</li>
+              <li>Páginas rápidas (performance).</li>
+              <li>Textos com clareza e profundidade (sem enrolar).</li>
+              <li>Links internos e organização (o Google ama isso).</li>
+              <li>Integração com Instagram e comunidade.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="card">
+          <h3>Resumo técnico (bem direto)</h3>
+          <p>
+            <b>Instagram</b> distribui quando o vídeo segura atenção e recebe sinais fortes.<br/>
+            <b>Google</b> distribui quando seu conteúdo responde uma busca e mantém qualidade.<br/>
+            Juntos, eles criam crescimento fora da sua região — com uma base oficial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTODO -->
+    <section id="metodo" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Método</b> de execução</span>
+        <h2>Você vive a sua rotina. A MyndVerse opera o crescimento.</h2>
+        <p>
+          Você não precisa “virar refém” de postar todo dia.
+          A operação é estruturada para funcionar mesmo em semanas mais difíceis.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="flow">
+
+          <div class="flow-step">
+            <div class="num">01</div>
+            <div>
+              <h3>Mapeamento + posicionamento</h3>
+              <p>
+                Definimos quais narrativas serão repetidas com inteligência (para o algoritmo aprender) e quais formatos
+                vão ser as “âncoras” do perfil.
+              </p>
+              <ul>
+                <li>O que deve ser “marca” e o que deve ser “série”.</li>
+                <li>O que gera retenção e o que gera compartilhamento.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">02</div>
+            <div>
+              <h3>Produção e edição de retenção máxima</h3>
+              <p>
+                Conteúdo curto, forte e altamente editado — para elevar o tempo assistido e a entrega.
+              </p>
+              <ul>
+                <li>Roteiros curtos + captação objetiva.</li>
+                <li>Motion, VFX, texto, ritmo e emoção.</li>
+                <li>Formato difícil de pular.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">03</div>
+            <div>
+              <h3>Automação e comunidade</h3>
+              <p>
+                Cada vídeo tem um “próximo passo”: comentário → mensagem → comunidade.
+                Assim o crescimento vira sistema, não acaso.
+              </p>
+              <ul>
+                <li>Gatilhos simples (palavra-chave).</li>
+                <li>Entrega automática (link / acesso / lista).</li>
+                <li>Base própria para não depender só do Instagram.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">04</div>
+            <div>
+              <h3>Distribuição e aceleração</h3>
+              <p>
+                Quando um conteúdo performa, ele é “acelerado” para romper o regional e alcançar públicos
+                semelhantes em outras regiões.
+              </p>
+              <ul>
+                <li>Distribuição orgânica + aceleração estratégica.</li>
+                <li>Replicação do que funciona (com variações).</li>
+                <li>Objetivo: aumentar não seguidores e seguidores reais.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">05</div>
+            <div>
+              <h3>Site oficial + Google (crescimento indireto)</h3>
+              <p>
+                O site vira sua “base oficial”: melhora autoridade e cria tráfego orgânico fora do Instagram.
+              </p>
+              <ul>
+                <li>Blog e páginas para buscas reais.</li>
+                <li>CTA para Instagram e comunidade.</li>
+                <li>Tráfego do Google alimenta seguidores novos.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <details>
+          <summary>
+            “E se eu estiver sem tempo por causa da gravidez?”
+            <span class="chev">˅</span>
+          </summary>
+          <p>
+            O sistema é montado para funcionar mesmo assim: gravações pontuais, conteúdo planejado,
+            automação cuidando do “pós-post”, e programação do calendário para manter consistência.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            “Como eu vou perceber que está funcionando?”
+            <span class="chev">˅</span>
+          </summary>
+          <p>
+            Você vai notar principalmente: aumento do tempo assistido (retenção), aumento de compartilhamentos,
+            aumento de comentários e aumento de alcance em “não seguidores”. É isso que empurra crescimento.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            “Isso substitui meu editor atual?”
+            <span class="chev">˅</span>
+          </summary>
+          <p>
+            A MyndVerse entra como direção estratégica e operação. Podemos somar (se ele colaborar) ou assumir
+            totalmente a produção. O objetivo é: parar o atraso e colocar o crescimento em piloto automático.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONCLUSÃO -->
+    <section id="conclusao" class="reveal">
+      <div class="section-head">
+        <span class="kicker"><span class="kline"></span><b>Conclusão</b></span>
+        <h2>Você não precisa fazer tudo. Você precisa de um sistema por trás.</h2>
+        <p>
+          A MyndVerse entra como agência para organizar estratégia, elevar retenção e ampliar distribuição,
+          com automação para converter interesse em seguidores — enquanto você foca na sua vida e na gestação.
+        </p>
+      </div>
+
+      <div class="section-body">
+        <div class="card">
+          <h3>Mensagem final (direta e elegante)</h3>
+          <p>
+            Rafa, enquanto você cuida da gravidez e da família, a MyndVerse assume o piloto automático:
+            <b>conteúdo que prende</b>, <b>distribuição que rompe a bolha</b>, <b>automação que converte</b>,
+            e um <b>site oficial</b> que amplia sua autoridade no Google.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#visao"><span class="ic">↑</span>Voltar ao topo</a>
+            <button class="btn" id="copyLinkBtn" type="button"><span class="ic">⧉</span>Copiar link</button>
+          </div>
+
+          <p id="copyMsg" style="margin-top:10px; font-size:12.5px; color:rgba(255,255,255,.65); display:none;">
+            Link copiado ✅
+          </p>
+
+          <p class="fineprint" style="margin-top:12px;">
+            Observação: esta apresentação evita nomes de ferramentas por propósito. O foco é no método e no resultado.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <h3 style="margin:0 0 6px;">MyndVerse</h3>
+      <p class="fineprint" style="margin:0;">
+        Operação premium • Estratégia + execução • Retenção + distribuição + automação • Site oficial + SEO
+        <br />
+        Resultado: romper o regional e criar crescimento previsível.
+      </p>
+    </footer>
+
+  </main>
+
+  <script>
+    // Active nav link
+    const navLinks = Array.from(document.querySelectorAll("nav a"));
+    const sections = navLinks
+      .map(a => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      navLinks.forEach(a => {
+        a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+      });
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActive(visible.target.id);
+    }, { threshold: [0.25, 0.5, 0.7] });
+
+    sections.forEach(s => io.observe(s));
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const rio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add("in");
+          rio.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => rio.observe(el));
+
+    // Carousel controls (if any)
+    const track = document.getElementById("track");
+    const prev = document.querySelector(".carousel .prev");
+    const next = document.querySelector(".carousel .next");
+
+    const scrollByCard = (dir) => {
+      if(!track) return;
+      const slide = track.querySelector(".slide");
+      const gap = 12;
+      const amount = slide ? (slide.getBoundingClientRect().width + gap) : 320;
+      track.scrollBy({ left: dir * amount, behavior: "smooth" });
+    };
+
+    prev?.addEventListener("click", () => scrollByCard(-1));
+    next?.addEventListener("click", () => scrollByCard(1));
+
+    // Copy link button
+    const copyBtn = document.getElementById("copyLinkBtn");
+    const copyMsg = document.getElementById("copyMsg");
+
+    copyBtn?.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        copyMsg.style.display = "block";
+        setTimeout(() => copyMsg.style.display = "none", 1800);
+      }catch(e){
+        const tmp = document.createElement("textarea");
+        tmp.value = window.location.href;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand("copy");
+        document.body.removeChild(tmp);
+        copyMsg.style.display = "block";
+        setTimeout(() => copyMsg.style.display = "none", 1800);
+      }
+    });
+  </script>
+</body>
+</html>
